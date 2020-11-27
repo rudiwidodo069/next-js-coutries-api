@@ -73,13 +73,13 @@ export default function Detail({ detail }) {
                     </div>
 
                     <div className="grid grid-cols-2 text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
-                        <p className="text-gray-500">Time Zone</p>
-                        <p className="text-green-500">{detail.timezones}</p>
-                    </div>
-
-                    <div className="grid grid-cols-2 text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
                         <p className="text-gray-500">Numeric Code</p>
                         <p className="text-green-500">{detail.numericCode}</p>
+                    </div>
+
+                    <div className="text-center text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
+                        <p className="text-gray-500">Time Zone</p>
+                        <p className="text-green-500">{detail.timezones}</p>
                     </div>
 
                     <div className="detail-languages text-center text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
