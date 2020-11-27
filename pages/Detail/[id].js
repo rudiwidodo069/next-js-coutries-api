@@ -16,7 +16,19 @@ export const getServerSideProps = async ({ params }) => {
     }
 }
 
+const setDecimal = population => {
+    let bilangan = population;
+
+    let reverse = bilangan.toString().split('').reverse().join(''),
+        ribuan = reverse.match(/\d{1,3}/g);
+    ribuan = ribuan.join('.').split('').reverse().join('');
+
+    return ribuan;
+}
+
 export default function Detail({ detail }) {
+    const decimal = setDecimal(detail.population);
+
     return (
         <div className="bg-gray-300">
             <Head>
@@ -24,7 +36,7 @@ export default function Detail({ detail }) {
                 <meta name="description" content="blog next js" />
                 <meta name="keywords" content="next javascript react ssr" />
                 <meta name="author" content="Rudi widodo" />
-                <title>Detail | {detail.name}</title>
+                <title>Detail Counntry | {detail.name}</title>
             </Head>
 
             <TitleComp title="Detail" subtitle="Country" />
@@ -47,7 +59,7 @@ export default function Detail({ detail }) {
 
                     <div className="grid grid-cols-2 text-2xl uppercase font-medium gap-3 p-5 mt-2">
                         <p className="text-gray-500">Population</p>
-                        <p className="text-green-500">{detail.population}</p>
+                        <p className="text-green-500">{decimal}</p>
                     </div>
                 </div>
 
@@ -75,11 +87,6 @@ export default function Detail({ detail }) {
                     <div className="grid grid-cols-2 text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
                         <p className="text-gray-500">Numeric Code</p>
                         <p className="text-green-500">{detail.numericCode}</p>
-                    </div>
-
-                    <div className="text-center text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">
-                        <p className="text-gray-500">Time Zone</p>
-                        <p className="text-green-500">{detail.timezones}</p>
                     </div>
 
                     <div className="detail-languages text-center text-2xl uppercase font-medium gap-5 shadow-xl bg-white p-5 mt-5">

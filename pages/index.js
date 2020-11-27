@@ -27,7 +27,7 @@ export default function IndexPage({ countries }) {
   const handleSearch = e => {
     const keyword = e.target.value;
     const data = countries.filter(coutries => {
-      return coutries.name.toLowerCase().includes(keyword);
+      return coutries.name.toLowerCase().includes(keyword.toLowerCase());
     });
 
     if (data.length > 0) {
@@ -38,6 +38,7 @@ export default function IndexPage({ countries }) {
       setError(true);
     }
   }
+
   return (
     <div>
       <Head>
@@ -47,12 +48,18 @@ export default function IndexPage({ countries }) {
         <meta name="author" content="Rudi widodo" />
         <title>next project | Rudi widodo</title>
       </Head>
+
       <div className="full-width p-10 bg-gray-100 containers">
-        <TitleComp title="All" subtitle="Country" />
-        <MemoSearch change={handleSearch} />
+
+        <div className="fixed  bg-gray-100 top-0 left-0 right-0 pt-0 px-5 nav">
+          <TitleComp title="All" subtitle="Country" />
+          <MemoSearch change={handleSearch} />
+        </div>
+
         <MemoCard data={dataCountries} />
         {error && <ErrorComp />}
       </div>
+
     </div>
   );
 }
