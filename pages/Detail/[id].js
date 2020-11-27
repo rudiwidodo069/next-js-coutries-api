@@ -37,7 +37,7 @@ export default function Detail({ detail }) {
                     </div>
 
                     <div className="w-full p-5">
-                        <img src={detail.flag} alt={detail.name} className="w-4/5 h-4/5 rounded mx-auto" />
+                        <img src={detail.flag} alt={detail.name} className="w-4/5 h-4/5 rounded mx-auto shadow-lg" />
                     </div>
 
                     <div className="grid grid-cols-2 text-2xl uppercase font-medium gap-3 p-5 mt-2">
