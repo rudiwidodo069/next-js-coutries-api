@@ -1,14 +1,61 @@
-import Nav from '../components/nav'
+import { memo, useState } from "react";
+import Head from 'next/head';
 
-export default function IndexPage() {
+// component 
+import TitleComp from '../components/TitleComp';
+import MainContent from '../components/MainComp';
+import SearchComp from '../components/Search';
+import ErrorComp from "../components/ErrorCopm";
+
+export const getStaticProps = async () => {
+  const countries = await fetch('https://restcountries.eu/rest/v2/all')
+    .then(res => res.json())
+    .then(res => res)
+    .catch(err => console.log(err));
+
+  return {
+    props: {
+      countries,
+    }
+  }
+}
+
+export default function IndexPage({ countries }) {
+  const [dataCountries, setDataCountries] = useState(countries);
+  const [error, setError] = useState(false);
+
+  const handleSearch = e => {
+    const keyword = e.target.value;
+    const data = countries.filter(coutries => {
+      return coutries.name.toLowerCase().includes(keyword);
+    });
+
+    if (data.length > 0) {
+      setDataCountries(data);
+      setError(false);
+    } else {
+      setDataCountries([]);
+      setError(true);
+    }
+  }
   return (
     <div>
-      <Nav />
-      <div className="py-20">
-        <h1 className="text-5xl text-center text-accent-1">
-          Next.js + Tailwind CSS
-        </h1>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="blog next js" />
+        <meta name="keywords" content="next javascript react ssr" />
+        <meta name="author" content="Rudi widodo" />
+        <title>next project | Rudi widodo</title>
+      </Head>
+      <div className="full-width p-10 bg-gray-100 containers">
+        <TitleComp title="All" subtitle="Country" />
+        <MemoSearch change={handleSearch} />
+        <MemoCard data={dataCountries} />
+        {error && <ErrorComp />}
       </div>
     </div>
-  )
+  );
 }
+
+const MemoCard = memo(MainContent);
+const MemoSearch = memo(SearchComp);

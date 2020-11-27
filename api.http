@@ -1,0 +1,7 @@
+@host = https://restcountries.eu/rest/v2
+
+### get all
+GET {{host}}/all
+
+### get by name
+GET  {{host}}/name/indonesia

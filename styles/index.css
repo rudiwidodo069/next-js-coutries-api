@@ -1,18 +1,112 @@
 @tailwind base;
 
-/* Write your own custom base styles here */
-
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
 
-/* Write your own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
-
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
 
 /* Your own custom utilities */
+@media (min-width: 1000px) {
+  .main-box-img {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .box-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .box-content {
+    grid-template-columns: 1fr;
+  }
+
+  .main-card {
+    width: 80%;
+    margin: auto;
+  }
+
+  .main-box-img {
+    margin-top: 20px;
+    width: 90%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-detail {
+    width: 85%;
+    text-align: center;
+    letter-spacing: 8px;
+  }
+}
+
+@media (max-width: 578px) {
+  .containers {
+    padding: 20px;
+  }
+
+  .main-card {
+    width: 100%;
+  }
+
+  .main-name-country {
+    font-size: 1.5rem;
+  }
+
+  .main-box-img {
+    width: 85%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-population {
+    font-size: 1.5rem;
+  }
+
+  .error {
+    width: 100%;
+  }
+
+  .text-error {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .box-detail {
+    padding: 20px;
+  }
+
+  .box-detail-left h1 {
+    font-size: 1.5rem;
+  }
+
+  .box-detail-left .grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    font-size: 1.5rem;
+  }
+
+  .box-detail-right .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
